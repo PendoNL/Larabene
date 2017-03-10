@@ -49,6 +49,7 @@ de artikelen module komen vanzelf in het menu zodra deze ten minste 1 artikel be
 
 ## To-do
 
+- Databases seeds om demo op te zetten [WIP: Alex de Groot]
 - Uitgebreider menu beheer voor de website
 - Pagina module mogelijkheid geven tot subpagina's
 - Bedrijvengids maken (bedrijfsnaam, logo, korte omschrijving, website)
