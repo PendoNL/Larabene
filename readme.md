@@ -3,7 +3,7 @@
 
 Wordt lid van de community op Slack, vraag [hier je invite aan](https://larabene.signup.team/)
 
-Deze Github repo bevat de bronbestanden van Larabene.com, iedere Artisan uit Belgi&euml; of Nederland 
+Deze Github repo bevat de bronbestanden van Larabene.com, iedere Artisan uit Belgi&euml; of Nederland
 is van harte welkom om lid te worden van deze community en zijn of haar steentje bij te dragen aan de
 website die gebruikt wordt.
 
@@ -13,9 +13,10 @@ De installatie van de website gebeurd in een aantal eenvoudige stappen.
 
 - Clone de repository
 - Kopieer de .env.example file en vul deze *
-- `composer install` en `nmp install` 
+- `composer install` en `npm install`
 - `php artisan migrate`
-- `php artisan vendor:publish` 
+- `php artisan vendor:publish`
+- `php artisan key:generate`
 - [to-do] `php artisan db:seed` **
 
 *: Op dit moment worden enkel de [KrakenIO](https://kraken.io/) en [Recaptcha](https://www.google.com/recaptcha/intro/invisible.html) APIs gebruikt.
@@ -23,7 +24,7 @@ Beide zijn gratis te gebruiken, in geval van KrakenIO zit er wel een limiet op h
 wordt gebruikt om uploads te optimaliseren voor een betere PageSpeed.
 
 **: Er zijn nog geen seeds beschikbaar die een standaard gebruiker en wat artikelen invoeren. Dit moet nog toegevoegd
-worden. 
+worden.
 
 ## Registratie
 
@@ -37,10 +38,10 @@ INSERT INTO roles (name, display_name, description, created_at, updated_at) VALU
 
 Adminstrator koppelen aan je gebruiker:
 ```
-INSERT INTO role_uers (user_id, role_id) VALUES (1, 1)
+INSERT INTO role_user (user_id, role_id) VALUES (1, 1)
 ```
 
-Vervolgens kun je via http://larabene.com/admin inloggen op het admin panel (accounts worden direct geactiveerd) om
+Vervolgens kun je via http://larabene.dev/admin inloggen op het admin panel (accounts worden direct geactiveerd) om
 de content beheren. De pagina's uit de pagina module worden automatisch in het menu geplaatst en categorie&euml;n uit
 de artikelen module komen vanzelf in het menu zodra deze ten minste 1 artikel bevat.
 
