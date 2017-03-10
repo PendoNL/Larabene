@@ -7,6 +7,8 @@ Deze Github repo bevat de bronbestanden van Larabene.com, iedere Artisan uit Bel
 is van harte welkom om lid te worden van deze community en zijn of haar steentje bij te dragen aan de
 website die gebruikt wordt.
 
+De uiteindelijke website komt, zodra afgerond, op [http://www.larabene.com](http://www.larabene.com)
+
 ## Installatie
 
 De installatie van de website gebeurd in een aantal eenvoudige stappen.
