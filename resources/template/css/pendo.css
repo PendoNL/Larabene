@@ -1,0 +1,50 @@
+h1,
+.portfolio-box .project-post .hover-box .inner-hover a i,
+header .navbar-nav li.drop ul.dropdown li a:hover,
+header .navbar-nav li.drop ul.dropdown li a:hover,
+header .navbar-nav > li a:hover,
+header .navbar-nav > li a.active,
+.team-post .team-content ul.team-social li a:hover i,
+.similar-project .project-post .hover-box .inner-hover a i,
+.project-section .single-project-content ul li:before {
+    color: #FB715F;
+}
+
+.services-box .services-post,
+.flex-direction-nav .flex-next,
+.flex-direction-nav .flex-prev,
+.portfolio-box .project-post .hover-box,
+.portfolio-section ul.filter li a:hover,
+.portfolio-section ul.filter li a.active,
+header .navbar-nav li.drop ul.dropdown li a,
+.footer-line ul.footer-social-icons li a:hover,
+.up-footer ul.tags-list li a,
+#contact-form input[type="submit"],
+.comment-form input[type="submit"],
+.title-section:after,
+.team-post .team-content ul.team-social,
+.sidebar .sidebar-widget .tag-list li a,
+.sidebar .sidebar-widget ul.sidebar-social li a,
+ul.blog-pagination li a.active,
+ul.blog-pagination li a:hover,
+.blog-section .blog-post > a,
+.blog-section .blog-post .blog-title,
+.carousel-control.right,
+.carousel-control.left,
+.skin-version header,
+.skin-version footer,
+.similar-project .project-post .hover-box,
+.project-section .single-project-content > a {
+    background: #FB715F;
+}
+
+header .navbar-nav > li > a:hover,
+header .navbar-nav > li > a.active,
+ul.blog-pagination li a.active,
+ul.blog-pagination li a:hover {
+    border-color: #FB715F;
+}
+
+.skin-version footer a {
+    color: white;
+}

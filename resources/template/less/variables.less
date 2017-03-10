@@ -1,0 +1,210 @@
+
+/* the default fonts in our template*/
+@font: 'Quicksand', sans-serif;
+@font-alternative: 'Roboto', sans-serif;
+
+/* default color skin */
+@skin-color: #FB715F;
+
+/* text color 1*/
+@color1: #828282; 
+
+/* text color 3 (white text color)*/
+@white: #ffffff;
+
+/* text color 4 (black text color)*/
+@black: #000000;
+
+/* ul reset margin and padding*/
+.ul-reset {
+    margin: 0;
+    padding: 0;
+}
+
+/* default style for paragraphs in this template*/
+.paragraph {
+    font-size: 15px;
+    color: @color1;
+    font-family: @font-alternative;
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    line-height: 22px;
+    margin: 0 0 20px;
+}
+
+/* default style for anchors in this template*/
+.anchor {
+    display: inline-block;
+    text-decoration: none;
+    .transition;
+}
+
+/* default style for hading1 in this template*/
+.heading1 {
+    color: @skin-color;
+    font-size: 30px;
+    font-family: @font;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+
+/* default style for hading2 in this template*/
+.heading2 {
+    color: @black;
+    font-size: 21px;
+    font-family: @font;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+
+/* variable for radius corners*/
+.radius(@radius) { 
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -o-border-radius: @radius;
+    border-radius: @radius;
+}
+
+/* variable for radius corners*/
+.radius-bottom-left(@radius) { 
+    -webkit-border-bottom-left-radius: @radius;
+    -moz-border-bottom-left-radius: @radius;
+    -o-border-bottom-left-radius: @radius;
+    border-bottom-left-radius: @radius;
+}
+
+/* variable for radius corners*/
+.radius-bottom-right(@radius) { 
+    -webkit-border-bottom-right-radius: @radius;
+    -moz-border-bottom-right-radius: @radius;
+    -o-border-bottom-right-radius: @radius;
+    border-bottom-right-radius: @radius;
+}
+
+/* variable for radius corners*/
+.radius-top-left(@radius) {
+    -webkit-border-top-left-radius: @radius;
+    -moz-border-top-left-radius: @radius;
+    -o-border-top-left-radius: @radius;
+    border-top-left-radius: @radius;
+}
+
+/* variable for radius corners*/
+.radius-top-right(@radius) { 
+    -webkit-border-top-right-radius: @radius;
+    -moz-border-top-right-radius: @radius;
+    -o-border-top-right-radius: @radius;
+    border-top-right-radius: @radius;
+}
+
+/* variable for transitions*/
+.transition { 
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+}
+
+/* variable for transitions*/
+.transition2 { 
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+}
+
+/* variable for tranform grow elem scale*/
+.grow-transform(@scale) { 
+    transform: scale(@scale);
+    -webkit-transform: scale(@scale);
+    -moz-transform: scale(@scale);
+    -o-transform: scale(@scale);
+}
+
+/* no shadow  variable*/
+.no-shadow {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+}
+
+/* box shadow  variable*/
+.box-shadow {
+    box-shadow: 0 0 13px #d6d6d6;
+    -webkit-box-shadow: 0 0 13px #d6d6d6;
+    -moz-box-shadow: 0 0 13px #d6d6d6;
+    -o-box-shadow: 0 0 13px #d6d6d6;
+}
+
+/* animation duration  variable*/
+.animation-hover {
+    -webkit-animation-fill-mode:both;
+    -moz-animation-fill-mode:both;
+    -ms-animation-fill-mode:both;
+    -o-animation-fill-mode:both;
+    animation-fill-mode:both;
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    -ms-animation-duration:1s;
+    -o-animation-duration:1s;
+    animation-duration:1s;
+    -webkit-animation-name: hovertrans;
+    -moz-animation-name: hovertrans;
+    -ms-animation-name: hovertrans;
+    -o-animation-name: hovertrans;
+    animation-name: hovertrans;
+}
+
+/* animate transform variable*/
+.animate-transform {
+    @-webkit-keyframes hovertrans {
+        0% { .grow-transform(0); }    
+        50% { .grow-transform(1.07); }
+        100% { .grow-transform(1); }
+    }
+    @-moz-keyframes hovertrans {
+        0% { .grow-transform(0); }    
+        50% { .grow-transform(1.07); }
+        100% { .grow-transform(1); }
+    }
+    @-o-keyframes hovertrans {
+        0% { .grow-transform(0); }    
+        50% { .grow-transform(1.07); }
+        100% { .grow-transform(1); }
+    }
+    @keyframes hovertrans {
+        0% { .grow-transform(0); }    
+        50% { .grow-transform(1.07); }
+        100% { .grow-transform(1); }
+    }
+}
+
+/* animate transform rotate x variable*/
+.rotateX(@rotate) {
+    -webkit-transform: rotateX(@rotate);
+    -moz-transform: rotateX(@rotate);
+    -ms-transform: rotateX(@rotate);
+    -o-transform: rotateX(@rotate);
+    transform: rotateX(@rotate);
+}
+
+/* animate transform rotate Y variable*/
+.rotateY(@rotate) {
+    -webkit-transform: rotateY(@rotate);
+    -moz-transform: rotateY(@rotate);
+    -ms-transform: rotateY(@rotate);
+    -o-transform: rotateY(@rotate);
+    transform: rotateY(@rotate);
+}
+
+/* animate transform rotate Y variable*/
+.trans-origin {
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
