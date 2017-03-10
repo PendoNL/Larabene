@@ -1,6 +1,8 @@
 ### Laravel Belgi&euml; en Nederland
 ##### Community portal
 
+Wordt lid van de community op Slack, vraag [hier je invite aan](https://larabene.signup.team/)
+
 Deze Github repo bevat de bronbestanden van Larabene.com, iedere Artisan uit Belgi&euml; of Nederland 
 is van harte welkom om lid te worden van deze community en zijn of haar steentje bij te dragen aan de
 website die gebruikt wordt.
@@ -60,10 +62,3 @@ basic op dit moment.
 Mijn eigen was om `single-project.html` te gebruiken om een bedrijvengids mee vorm te geven (detailpagina), op de
 homepage zijn dan de kleinere blokken uit `home2.html`  te gebruiken om op de homepage random een 4-8 tal bedrijven
 te laten langskomen die zijn aangesloten bij de community om elkaar zo ook nog een beetje exposure te kunnen geven.
-
-## Lid worden van de community?
-
-Dat kan! Op dit moment zitten we nog in een priv&eacute; Slack kanaal van Larachat, via 
-[Github Issue 1](https://github.com/PendoNL/Larabene/issues/1) is het mogelijk om je gebruikersnaam achter
-te laten zodat een van de leden je kan uitnodigen. Op latere termijn zal een breder ingericht Slack team
-beschikbaar worden gemaakt om onderwerpen beter te scheiden.
