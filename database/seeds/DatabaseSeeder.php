@@ -18,5 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AgendaCategorySeeder::class);
 
         Model::reguard();
+        $this->call('RolesTableSeeder');
+        $this->call('RoleUserTableSeeder');
+        $this->call('ArticlesTableSeeder');
+        $this->call('ArticleCategoriesTableSeeder');
+        $this->call('UsersTableSeeder');
     }
 }
