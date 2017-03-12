@@ -71,4 +71,3 @@ fabric.properties
 .vagrant/
 public/photos/shares/
 shares/
-database/seeds/ContentTableSeeder.php
