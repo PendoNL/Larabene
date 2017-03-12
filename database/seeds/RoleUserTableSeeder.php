@@ -12,8 +12,6 @@ class RoleUserTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('role_user')->delete();
         
         \DB::table('role_user')->insert(array (
@@ -23,7 +21,5 @@ class RoleUserTableSeeder extends Seeder
                 'role_id' => 1,
             ),
         ));
-        
-        
     }
 }

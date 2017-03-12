@@ -13,15 +13,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        $this->call(RolePermissionSeeder::class);
-        $this->call(AgendaCategorySeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(RoleUserTableSeeder::class);
+        $this->call(ArticleCategoriesTableSeeder::class);
+        $this->call(ArticlesTableSeeder::class);
+        $this->call(ContentTableSeeder::class);
 
         Model::reguard();
-        $this->call('RolesTableSeeder');
-        $this->call('RoleUserTableSeeder');
-        $this->call('ArticlesTableSeeder');
-        $this->call('ArticleCategoriesTableSeeder');
-        $this->call('UsersTableSeeder');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

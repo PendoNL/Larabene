@@ -12,8 +12,6 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('roles')->delete();
         
         \DB::table('roles')->insert(array (
@@ -27,7 +25,5 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2017-03-10 21:02:24',
             ),
         ));
-        
-        
     }
 }

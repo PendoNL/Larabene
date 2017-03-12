@@ -33,12 +33,6 @@ class Article extends Model implements SluggableInterface
     protected $dates = ['date'];
 
     /**
-     * This model does not user timestamps
-     * @var bool $timestamps
-     */
-    public $timestamps = false;
-
-    /**
      * Fillable fields
      * @var array $fillable
      */

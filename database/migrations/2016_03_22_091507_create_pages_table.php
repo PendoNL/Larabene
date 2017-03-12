@@ -13,12 +13,12 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function(Blueprint $table) {
-            $table->timestamps();
             $table->increments('id');
             $table->string('slug');
             $table->string('menu_text');
             $table->string('title');
             $table->text('content');
+            $table->timestamps();
         });
 
         Schema::create('metas', function(Blueprint $table) {

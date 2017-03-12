@@ -12,6 +12,9 @@ node_modules/
 .env.php
 .env
 public/uploads/
+!public/uploads/avatars/placeholder.png
+!public/uploads/articles/placeholder.png
+!public/uploads/articles/thumb.placeholder.png
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
@@ -68,3 +71,4 @@ fabric.properties
 .vagrant/
 public/photos/shares/
 shares/
+database/seeds/ContentTableSeeder.php

@@ -15,37 +15,26 @@ De installatie van de website gebeurd in een aantal eenvoudige stappen.
 
 - Clone de repository
 - Kopieer de .env.example file en vul deze *
+- `php artisan key:generate`
 - `composer install` en `npm install`
 - `php artisan migrate`
+- `php artisan db:seed`
 - `php artisan vendor:publish`
-- `php artisan key:generate`
-- [to-do] `php artisan db:seed` **
 
 *: Op dit moment worden enkel de [KrakenIO](https://kraken.io/) en [Recaptcha](https://www.google.com/recaptcha/intro/invisible.html) APIs gebruikt.
 Beide zijn gratis te gebruiken, in geval van KrakenIO zit er wel een limiet op het gratis account maar dit is ruim voldoende om mee te testen. KrakenIO
-wordt gebruikt om uploads te optimaliseren voor een betere PageSpeed.
+wordt gebruikt om uploads te optimaliseren voor een betere Page Speed.
 
-**: Er zijn nog geen seeds beschikbaar die een standaard gebruiker en wat artikelen invoeren. Dit moet nog toegevoegd
-worden.
+## Website gebruiken
 
-## Registratie
+Na installatie dien je via http://larabene.dev/gebruiker/inloggen met de standaard gebruiker die wordt toegevoegd:
 
-Na installatie dien je via http://larabene.dev/gebruiker/aanmelden een account te maken, vervolgens via een
-database tool als Sequel Pro inloggen en de volgende queries uitvoeren:
+- E-mail: info@larabene.dev
+- Wachtwoord: welkom
 
-Administrator rol aanmaken:
-```
-INSERT INTO roles (name, display_name, description, created_at, updated_at) VALUES ('admin', 'Administrator', 'Beheerder van de website', NOW(), NOW())
-```
-
-Adminstrator koppelen aan je gebruiker:
-```
-INSERT INTO role_user (user_id, role_id) VALUES (1, 1)
-```
-
-Vervolgens kun je via http://larabene.dev/admin inloggen op het admin panel (accounts worden direct geactiveerd) om
-de content beheren. De pagina's uit de pagina module worden automatisch in het menu geplaatst en categorie&euml;n uit
-de artikelen module komen vanzelf in het menu zodra deze ten minste 1 artikel bevat.
+Vervolgens kun je naar http://larabene.dev/admin gaan om de content beheren. De pagina's uit de pagina module worden 
+automatisch in het menu geplaatst en categorie&euml;n uit de artikelen module komen vanzelf in het menu zodra deze 
+ten minste 1 artikel bevat.
 
 ## To-do
 
