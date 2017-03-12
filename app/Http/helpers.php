@@ -99,9 +99,9 @@ function hex2rgba($color, $opacity = false)
 
     //Check if color has 6 or 3 characters and get values
     if (strlen($color) == 6) {
-        $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+        $hex = [ $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] ];
     } elseif (strlen($color) == 3) {
-        $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+        $hex = [ $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] ];
     } else {
         return $default;
     }
@@ -195,7 +195,7 @@ function truncate_html($s, $l, $e = '', $isHTML = true)
     $s = trim($s);
     $e = (strlen(strip_tags($s)) > $l) ? $e : '';
     $i = 0;
-    $tags = array();
+    $tags = [];
 
     if ($isHTML) {
         preg_match_all('/<[^>]+>([^<]*)/', $s, $m, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
