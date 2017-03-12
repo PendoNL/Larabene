@@ -13,7 +13,7 @@ use App\Article;
 use Request;
 use Route;
 use Flash;
-use Input;
+
 use Image;
 use Event;
 use File;
@@ -101,7 +101,7 @@ class ArticleController extends Controller
      */
     public function search()
     {
-        $string = Input::get('string');
+        $string = Request::get('string');
         Session::put('blog_string', $string);
 
         return redirect(route('blogs.index'));
