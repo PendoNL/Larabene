@@ -25,11 +25,6 @@ class Content extends Model implements SluggableInterface
     ];
 
     /**
-     * @var array $dates
-     */
-    protected $dates = ['created_at', 'updated_at'];
-
-    /**
      * @var array $fillable
      */
     protected $fillable = [

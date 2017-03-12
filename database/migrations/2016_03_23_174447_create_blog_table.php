@@ -20,15 +20,17 @@ class CreateBlogTable extends Migration
 
         Schema::create('articles', function(Blueprint $table) {
             $table->increments('id');
-            $table->boolean('active')->default(0);
+            $table->tinyInteger('active')->default(0);
+            $table->tinyInteger('highlighted')->default(0);
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('slug');
-            $table->date('date');
+            $table->string('url');
             $table->string('title');
             $table->string('image');
             $table->text('content');
             $table->string('tags');
+            $table->timestamps();
         });
 
         Schema::table('articles', function (Blueprint $table) {
