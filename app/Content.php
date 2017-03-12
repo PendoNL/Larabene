@@ -42,10 +42,11 @@ class Content extends Model implements SluggableInterface
     /**
      * @return array
      */
-    public function pageMeta() {
+    public function pageMeta()
+    {
         $return = [];
 
-        foreach($this->metas as $meta) {
+        foreach ($this->metas as $meta) {
             $return[$meta->name] = $meta->value;
         }
 

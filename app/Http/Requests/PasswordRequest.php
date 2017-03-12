@@ -24,9 +24,7 @@ class PasswordRequest extends Request
      */
     public function rules()
     {
-        switch($this->method)
-        {
-
+        switch ($this->method) {
             case 'PATCH':
             case 'PUT':
                 return [
@@ -38,10 +36,6 @@ class PasswordRequest extends Request
             default:
                 return [];
                 break;
-
         }
-
-
-
     }
 }

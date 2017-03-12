@@ -23,9 +23,7 @@ class CategoryRequest extends Request
      */
     public function rules()
     {
-        switch($this->method)
-        {
-
+        switch ($this->method) {
             case 'POST':
                 return [
                     'name' => 'required'
@@ -42,10 +40,6 @@ class CategoryRequest extends Request
             default:
                 return [];
             break;
-
         }
-
-
-
     }
 }

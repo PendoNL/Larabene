@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
-        if($e instanceof HttpException) {
+        if ($e instanceof HttpException) {
             return redirect(route('auth.login'));
         }
 

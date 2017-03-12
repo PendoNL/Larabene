@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'info@larabene.dev',
                 'avatar' => 'placeholder.png',
                 'password' => bcrypt('welkom'),
-                'remember_token' => NULL
+                'remember_token' => null
             ),
         ));
 

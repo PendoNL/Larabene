@@ -13,7 +13,7 @@ class ContentRequest extends Request
      */
     public function authorize()
     {
-        switch($this->method) {
+        switch ($this->method) {
             case 'POST':
                 return Gate::allows('create-content');
                 break;
@@ -27,7 +27,6 @@ class ContentRequest extends Request
                 return false;
                 break;
         }
-
     }
 
     /**
@@ -37,9 +36,7 @@ class ContentRequest extends Request
      */
     public function rules()
     {
-        switch($this->method)
-        {
-
+        switch ($this->method) {
             case 'POST':
                 return [
                     'title' => 'required',
@@ -60,10 +57,6 @@ class ContentRequest extends Request
             default:
                 return [];
                 break;
-
         }
-
-
-
     }
 }

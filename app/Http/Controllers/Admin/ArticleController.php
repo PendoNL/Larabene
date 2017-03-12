@@ -165,7 +165,7 @@ class ArticleController extends \App\Http\Controllers\Controller
      */
     public function defront(Article $article)
     {
-        if($article->type == "B") {
+        if ($article->type == "B") {
             $article->front = 0;
             $article->save();
 
@@ -183,7 +183,7 @@ class ArticleController extends \App\Http\Controllers\Controller
      */
     public function front(Article $article)
     {
-        if($article->type == "B") {
+        if ($article->type == "B") {
             $article->front = 1;
             $article->save();
 
@@ -201,7 +201,7 @@ class ArticleController extends \App\Http\Controllers\Controller
      */
     public function removeImage(Article $article)
     {
-        if(file_exists(public_path('uploads/articles/' . $article->image)) && $article->image != "") {
+        if (file_exists(public_path('uploads/articles/' . $article->image)) && $article->image != "") {
             File::delete(public_path('uploads/articles/' . $article->image));
             $article->image = '';
             $article->save();
@@ -218,15 +218,13 @@ class ArticleController extends \App\Http\Controllers\Controller
      */
     public function uploadImage($old = '')
     {
-        if (Request::hasFile('image'))
-        {
+        if (Request::hasFile('image')) {
             $image = Request::file('image');
             $filename  = time() . Str::random(10) . '.' . $image->getClientOriginalExtension();
             $path = public_path('uploads/articles/' . $filename);
             $thumb = public_path('uploads/articles/thumb.' . $filename);
 
-            try
-            {
+            try {
                 Image::make($image->getRealPath())->resize(800, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($path);
@@ -235,12 +233,12 @@ class ArticleController extends \App\Http\Controllers\Controller
                     $constraint->aspectRatio();
                 })->save($thumb);
 
-                if($old != "") {
-                    if(file_exists(public_path('uploads/articles/'.$old))) {
+                if ($old != "") {
+                    if (file_exists(public_path('uploads/articles/'.$old))) {
                         File::delete(public_path('uploads/articles/' . $old));
                     }
 
-                    if(file_exists(public_path('uploads/articles/thumb.'.$old))) {
+                    if (file_exists(public_path('uploads/articles/thumb.'.$old))) {
                         File::delete(public_path('uploads/articles/thumb.' . $old));
                     }
                 }
@@ -251,7 +249,7 @@ class ArticleController extends \App\Http\Controllers\Controller
                     'lossy' => true,
                 ]);
 
-                if($response['success'] == true) {
+                if ($response['success'] == true) {
                     $contents = file_get_contents($response['kraked_url']);
 
                     File::delete($path);
@@ -273,8 +271,7 @@ class ArticleController extends \App\Http\Controllers\Controller
      */
     public function destroy(Article $article)
     {
-        if( Gate::denies('delete-article') )
-        {
+        if (Gate::denies('delete-article')) {
             return redirect(route('admin.articles'));
         }
 

@@ -32,7 +32,7 @@ class ArticleController extends Controller
     public function index()
     {
         $blogs = Article::active()->recent();
-        if(Session::get('blog_string') != "") {
+        if (Session::get('blog_string') != "") {
             $blogs = $blogs->where('title', 'LIKE', '%'. Session::get('blog_string') .'%');
             $blogs = $blogs->orWhere('content', 'LIKE', '%'. Session::get('blog_string') .'%');
         }
@@ -106,5 +106,4 @@ class ArticleController extends Controller
 
         return redirect(route('blogs.index'));
     }
-
 }

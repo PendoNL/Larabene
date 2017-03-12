@@ -6,29 +6,28 @@ use App\Http\Controllers\Controller;
 class SocialAuth extends Controller
 {
 
-    public function __construct(Socialite $socialite){
+    public function __construct(Socialite $socialite)
+    {
         $this->socialite = $socialite;
     }
 
-    public function getSocialAuth($provider=null)
+    public function getSocialAuth($provider = null)
     {
-        if(!config("services.$provider"))
+        if (!config("services.$provider")) {
             abort('404'); //just to handle providers that doesn't exist
+        }
 
         return $this->socialite->with($provider)->redirect();
     }
 
 
-    public function getSocialAuthCallback($provider=null)
+    public function getSocialAuthCallback($provider = null)
     {
-        if($user = $this->socialite->with($provider)->user()){
+        if ($user = $this->socialite->with($provider)->user()) {
             dd($user);
             // Hier moeten we iets doen met controlles van het User Model
-        }
-        else
-        {
+        } else {
             return 'something went wrong';
         }
     }
-
 }

@@ -18,7 +18,7 @@ class CreateBlogTable extends Migration
             $table->string('slug');
         });
 
-        Schema::create('articles', function(Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('active')->default(0);
             $table->tinyInteger('highlighted')->default(0);

@@ -10,9 +10,10 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 
-class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+class User extends Model implements
+    AuthenticatableContract,
+    AuthorizableContract,
+    CanResetPasswordContract
 {
 
     use Authenticatable, CanResetPassword, EntrustUserTrait;
@@ -53,7 +54,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public function getAvatarAttribute($avatar)
     {
-        if($avatar != "" && file_exists(public_path('uploads/avatars/' . $avatar))) {
+        if ($avatar != "" && file_exists(public_path('uploads/avatars/' . $avatar))) {
             return $avatar;
         } else {
             return 'placeholder.png';
@@ -67,12 +68,12 @@ class User extends Model implements AuthenticatableContract,
      */
     public function delete()
     {
-        if($this->attributes['avatar']) {
+        if ($this->attributes['avatar']) {
             $file = $this->attributes['avatar'];
-            if($file != "placeholder.png") {
+            if ($file != "placeholder.png") {
                 $path = public_path('uploads/avatars/' . $file);
 
-                if(\File::isFile($path)){
+                if (\File::isFile($path)) {
                     \File::delete($path);
                 }
             }

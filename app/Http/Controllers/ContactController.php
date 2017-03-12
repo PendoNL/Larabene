@@ -32,7 +32,7 @@ class ContactController extends Controller
      */
     public function post()
     {
-        if(Input::has('send')) {
+        if (Input::has('send')) {
             return $this->sendContactForm();
         }
     }
@@ -62,8 +62,7 @@ class ContactController extends Controller
 
         Flash::success('Uw bericht is verzonden, wij proberen zo spoedig mogelijk te antwoorden.');
 
-        Mail::send('emails.forms.contact', ['input' => $input], function($message) use ($input)
-        {
+        Mail::send('emails.forms.contact', ['input' => $input], function ($message) use ($input) {
             $message->from(env('MAIL_FROM'), env('MAIL_NAME'));
             $message->replyTo($input['email'], $input['name']);
             $message->to(env('MAIL_FROM'), env('MAIL_NAME'));

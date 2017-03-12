@@ -92,7 +92,7 @@ class ArticleCategoryController extends \App\Http\Controllers\Controller
      */
     public function destroy(ArticleCategory $category)
     {
-        if(count($category->articles) > 0) {
+        if (count($category->articles) > 0) {
             Flash::error('Deze categorie is niet leeg.');
 
             return redirect(route('admin.articles.categories'));

@@ -23,9 +23,7 @@ class ArticleRequest extends Request
      */
     public function rules()
     {
-        switch($this->method)
-        {
-
+        switch ($this->method) {
             case 'POST':
                 return [
                     'category_id' => 'required|exists:article_categories,id',
@@ -48,10 +46,6 @@ class ArticleRequest extends Request
             default:
                 return [];
             break;
-
         }
-
-
-
     }
 }
