@@ -9,8 +9,8 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "laravelcollective/html": "^5.3.0",
+        "laravel/framework": "5.4.*",
+        "laravelcollective/html": "5.4.*",
         "paulvl/backup": "3.*",
         "laravel/socialite": "^2.0",
         "cviebrock/eloquent-sluggable": "4.1",
@@ -28,12 +28,13 @@
         "php-http/guzzle6-adapter": "^1.0",
         "mailgun/mailgun-php": "~2.0",
         "php-http/message": "^1.2",
-        "pendonl/laravel-kraken": "1.*"
+        "pendonl/laravel-kraken": "1.*",
+        "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit": "~5.7",
         "phpspec/phpspec": "~2.1",
         "zizaco/entrust": "dev-laravel-5",
         "laracasts/generators": "^1.1",
