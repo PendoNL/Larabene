@@ -46,7 +46,7 @@ class ArticleController extends \App\Http\Controllers\Controller
         return view('admin.articles.create')->with([
             'article'       => $article,
             'buttonLabel'   => 'Opslaan',
-            'category_list' => ArticleCategory::alphabetical()->lists('name', 'id')
+            'category_list' => ArticleCategory::alphabetical()->pluck('name', 'id')
         ]);
     }
 
@@ -80,7 +80,7 @@ class ArticleController extends \App\Http\Controllers\Controller
         return view('admin.articles.update')->with([
             'article'       => $article,
             'buttonLabel'   => 'Wijzigingen opslaan',
-            'category_list' => ArticleCategory::alphabetical()->lists('name', 'id')
+            'category_list' => ArticleCategory::alphabetical()->pluck('name', 'id')
         ]);
     }
 
