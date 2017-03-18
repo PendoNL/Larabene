@@ -38,13 +38,7 @@ ten minste 1 artikel bevat.
 
 ## To-do
 
-- Databases seeds om demo op te zetten [WIP: Alex de Groot]
-- Uitgebreider menu beheer voor de website
-- Pagina module mogelijkheid geven tot subpagina's
-- Bedrijvengids maken (bedrijfsnaam, logo, korte omschrijving, website)
-- Sidebar als partial & voorzien van nuttige informatie (random bedrijf, laatste posts, e.d.)
-- Mogelijkheid tot reageren op de berichten (enkel geregistreerde leden of Facebook/Disqus?)
-- ... idee&euml;n?
+Alle to-do's (bugs en uitbreidingen, zowel technisch als grafisch) zijn terug te vinden bij de [Github Issues](https://github.com/PendoNL/Larabene/issues) van dit project. Iedereen mag het project forken en deze issues oppakken, graag zelfs!
 
 ## Template
 
