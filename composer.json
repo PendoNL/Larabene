@@ -11,7 +11,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "~5.0",
-        "paulvl/backup": "1.*",
+        "paulvl/backup": "3.*",
         "laravel/socialite": "^2.0",
         "cviebrock/eloquent-sluggable": "^3.1",
         "doctrine/dbal": "^2.5",

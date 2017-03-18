@@ -3,7 +3,7 @@
 
 <html lang="en" class="no-js">
 <head>
-    <base href="{{ url() }}" />
+    <base href="{{ url('/') }}" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url() }}" class="{{ is_active('content.home') }}">Home</a></li>
+                        <li><a href="{{ url('/') }}" class="{{ is_active('content.home') }}">Home</a></li>
                         @foreach(\App\Content::all() as $page)
                         <li>
                             <a href="{{ route('content.show', [$page->slug]) }}" class="{{ is_active_url(route('content.show', [$page->slug])) }}">{{ $page->menu_text }}</a>

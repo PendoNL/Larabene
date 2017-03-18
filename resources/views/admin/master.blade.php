@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <base href="{{ url() }}" />
+    <base href="{{ url('/') }}" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url() }}">Pendo Admin</a>
+            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Pendo Admin</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -63,7 +63,7 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="{{ url() }}"><i class="fa fa-globe fa-fw"></i> Naar de website</a>
+                        <a href="{{ url('/') }}"><i class="fa fa-globe fa-fw"></i> Naar de website</a>
                     </li>
                     <!-- Log Viewer -->
                     <li>

@@ -13,7 +13,7 @@ use App\Article;
 use Request;
 use Route;
 use Flash;
-
+use Session;
 use Image;
 use Event;
 use File;

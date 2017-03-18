@@ -83,7 +83,7 @@ class Article extends Model implements SluggableInterface
      */
     public function scopeRecent($query)
     {
-        return $query->orderBy('date', 'DESC');
+        return $query->orderBy('updated_at', 'DESC');
     }
 
     /**

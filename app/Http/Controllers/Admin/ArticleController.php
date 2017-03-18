@@ -29,7 +29,7 @@ class ArticleController extends \App\Http\Controllers\Controller
     public function index()
     {
         return view('admin.articles.index', [
-            'articles' => Article::orderBy('date', 'DESC')->paginate(25)
+            'articles' => Article::recent()->paginate(25)
         ]);
     }
 
@@ -59,7 +59,6 @@ class ArticleController extends \App\Http\Controllers\Controller
         $input = $request->all();
         $input['user_id']   = Auth::user()->id;
         $input['active']    = 1;
-        $input['date']      = \Carbon\Carbon::createFromFormat('d-m-Y', $input['date']);
         $input['image']     = $this->uploadImage();
 
         Article::create($input);
@@ -94,7 +93,6 @@ class ArticleController extends \App\Http\Controllers\Controller
     {
         $input = $request->except(['_token', '_method', 'groups']);
         $input['image'] = $this->uploadImage($article->image);
-        $input['date']  = \Carbon\Carbon::createFromFormat('d-m-Y', $input['date']);
 
         $article->update($input);
 

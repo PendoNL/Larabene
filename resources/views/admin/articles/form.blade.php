@@ -5,13 +5,6 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('date') ? 'has-error' : '' }}">
-    {!! Form::label('date', 'Datum:', ['class' => 'control-label col-sm-2']) !!}
-    <div class="col-sm-10">
-        {!! Form::text('date', $article->date->format('d-m-Y'), ['class' => 'form-control datepicker']) !!}
-    </div>
-</div>
-
 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
     {!! Form::label('title', 'Titel:', ['class' => 'control-label col-sm-2']) !!}
     <div class="col-sm-10">
