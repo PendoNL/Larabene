@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Route;
+use Request;
+use Session;
 use App\Article;
 use App\ArticleCategory;
-use Request;
-use Route;
-use Session;
 
 class ArticleController extends Controller
 {
