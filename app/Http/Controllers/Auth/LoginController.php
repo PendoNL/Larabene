@@ -29,11 +29,27 @@ class LoginController extends Controller
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * @param $request
+     * @param $user
+     * @return mixed
+     */
+    public function authenticated($request, $user)
+    {
+        // Check for active user
+        if ($user->active == 0) {
+            Auth::logout();
+            Flash::error('Uw account is nog niet geactiveerd.');
+
+            return redirect(route('auth.login'));
+        }
+
+        return redirect()->intended(route('member.dashboard'));
     }
 }

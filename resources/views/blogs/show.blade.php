@@ -29,7 +29,7 @@
                                 <div class="blog-title">
                                     <h2><a href="{{ route('blogs.show', [$blog->category->slug, $blog->slug]) }}">{{ $blog->title }}</a></h2>
                                     <ul class="post-tags">
-                                        <li><i class="fa fa-calendar-o"></i> {{ $blog->date->format('d-m-Y') }}</li>
+                                        <li><i class="fa fa-calendar-o"></i> {{ $blog->updated_at->format('d-m-Y') }}</li>
                                         <li><i class="fa fa-folder"></i> <a href="#">{{ $blog->category->name }}</a></li>
                                         <li><i class="fa fa-user"></i> <a href="#">{{ $blog->user->name }}</a></li>
                                     </ul>

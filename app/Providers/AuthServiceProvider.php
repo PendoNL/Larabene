@@ -41,18 +41,6 @@ class AuthServiceProvider extends ServiceProvider
         if (\Schema::hasTable('permissions')) {
             $this->entrustPermissions($gate);
         }
-
-        $this->hasActiveCompanyPermission($gate);
-    }
-
-    /**
-     * @param GateContract $gate
-     */
-    public function hasActiveCompanyPermission(GateContract $gate)
-    {
-        $gate->define('company-admin', function ($user) {
-            return count(Company::active()->fromUser($user->id)->get()) > 0;
-        });
     }
 
     /**

@@ -2,13 +2,12 @@
 
 namespace App;
 
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model implements SluggableInterface
+class Content extends Model
 {
-    use SluggableTrait;
+    use Sluggable;
 
     /**
      * @var string $table
@@ -16,13 +15,28 @@ class Content extends Model implements SluggableInterface
     protected $table = 'pages';
 
     /**
-     * @var array $sluggable
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
      */
-    protected $sluggable = [
-        'build_from'    => 'menu_text',
-        'save_to'       => 'slug',
-        'on_update'     => true,
-    ];
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'menu_text'
+            ]
+        ];
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     /**
      * @var array $fillable

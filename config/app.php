@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'My Application',
+    'name' => 'LaraBeNe',
 
     'env' => env('APP_ENV', 'production'),
 
@@ -160,7 +160,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Backup\BackupServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
@@ -170,7 +170,7 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
-        Danvuquoc\Kraken\KrakenServiceProvider::class,
+        PendoNL\Kraken\KrakenServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -201,7 +201,7 @@ return [
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
         'Blade'     => Illuminate\Support\Facades\Blade::class,
-        'Bus' => Illuminate\Support\Facades\Bus::class,
+        'Bus'       => Illuminate\Support\Facades\Bus::class,
         'Cache'     => Illuminate\Support\Facades\Cache::class,
         'Config'    => Illuminate\Support\Facades\Config::class,
         'Cookie'    => Illuminate\Support\Facades\Cookie::class,
@@ -240,7 +240,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
-        'KrakenIO'  => Danvuquoc\Kraken\KrakenFacade::class,
+        'KrakenIO'  => PendoNL\Kraken\KrakenFacade::class,
 
     ],
 

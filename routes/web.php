@@ -1,5 +1,7 @@
 <?php
 
+Auth::routes();
+
 /**
  * Administration Area Routes
  */
@@ -73,13 +75,14 @@ Route::post('/contact', 'ContactController@post');
 /**
  *  Leden Routes
  */
-Route::group(['prefix' => 'gebruiker'], function () {
-    Route::get('aanmelden', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@getRegister']);
-    Route::get('uitloggen', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout']);
-    Route::get('inloggen', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@getLogin']);
+Route::group(['prefix' => 'leden'], function () {
+    Route::get('registreren', ['as' => 'auth.register', 'uses' => 'Auth\RegisterController@getRegister']);
+    Route::get('uitloggen', ['as' => 'auth.logout', 'uses' => 'Auth\LoginController@logout']);
+    Route::get('inloggen', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@showLoginForm']);
+    Route::get('activeren/{token}', ['as' => 'auth.activate', 'uses' => 'Auth\RegisterController@getActivateAccount']);
 
-    Route::post('aanmelden', 'Auth\AuthController@postRegister');
-    Route::post('inloggen', 'Auth\AuthController@postLogin');
+    Route::post('/registreren', 'Auth\RegisterController@postRegister');
+    Route::post('/inloggen', 'Auth\LoginController@login');
 });
 
 /**

@@ -2,19 +2,36 @@
 
 namespace App;
 
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleCategory extends Model implements SluggableInterface
+class ArticleCategory extends Model
 {
-    use SluggableTrait;
+    use Sluggable;
 
-    protected $sluggable = [
-        'build_from'    => 'name',
-        'save_to'       => 'slug',
-        'on_update'     => true,
-    ];
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public $timestamps = false;
     protected $fillable = ['name', 'slug'];

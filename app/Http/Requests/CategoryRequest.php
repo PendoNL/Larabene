@@ -14,7 +14,7 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return \Auth::check();
+        return Gate::allows('anything');
     }
 
     /**

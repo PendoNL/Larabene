@@ -14,20 +14,7 @@ class ContentRequest extends FormRequest
      */
     public function authorize()
     {
-        switch ($this->method) {
-            case 'POST':
-                return Gate::allows('create-content');
-                break;
-
-            case 'PATCH':
-            case 'PUT':
-                return Gate::allows('update-content');
-                break;
-
-            default:
-                return false;
-                break;
-        }
+        return Gate::allows('anything');
     }
 
     /**

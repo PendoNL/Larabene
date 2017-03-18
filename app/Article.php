@@ -3,28 +3,41 @@
 namespace App;
 
 use File;
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use App\ArticleComment;
 
-class Article extends Model implements SluggableInterface
+class Article extends Model
 {
 
     /**
      * Model is Sluggable
      */
-    use SluggableTrait;
+    use Sluggable;
 
     /**
-     * Sluggable configuration
-     * @var array $sluggable
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
      */
-    protected $sluggable = [
-        'build_from'    => 'title',
-        'save_to'       => 'slug',
-        'on_update'     => true,
-    ];
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     /**
      * Date fields

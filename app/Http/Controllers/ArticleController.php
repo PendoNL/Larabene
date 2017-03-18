@@ -33,8 +33,8 @@ class ArticleController extends Controller
     {
         $blogs = Article::active()->recent();
         if (Session::get('blog_string') != "") {
-            $blogs = $blogs->where('title', 'LIKE', '%'. Session::get('blog_string') .'%');
-            $blogs = $blogs->orWhere('content', 'LIKE', '%'. Session::get('blog_string') .'%');
+            $blogs = $blogs->where('title', 'LIKE', '%'. Session::get('blog_string') .'%')
+                ->orWhere('content', 'LIKE', '%'. Session::get('blog_string') .'%');
         }
         $blogs = $blogs->paginate(15);
 
