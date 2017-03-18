@@ -42,13 +42,13 @@ class LoginController extends Controller
      */
     public function authenticated($request, $user)
     {
-        // Check for active user
+        /* Check for active user
         if ($user->active == 0) {
-            Auth::logout();
+            \Auth::logout();
             Flash::error('Uw account is nog niet geactiveerd.');
 
             return redirect(route('auth.login'));
-        }
+        }*/
 
         return redirect()->intended(route('member.dashboard'));
     }

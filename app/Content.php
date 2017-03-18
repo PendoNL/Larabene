@@ -50,7 +50,7 @@ class Content extends Model
      */
     public function metas()
     {
-        return $this->morphMany('\App\Meta', 'metable');
+        return $this->morphMany(\App\Meta::class, 'metable');
     }
 
     /**

@@ -71,7 +71,7 @@ class User extends Model implements
      */
     public function articles()
     {
-        return $this->hasMany('App\Article');
+        return $this->hasMany(\App\Article::class);
     }
 
     /**

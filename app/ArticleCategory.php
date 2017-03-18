@@ -50,6 +50,6 @@ class ArticleCategory extends Model
      */
     public function articles()
     {
-        return $this->hasMany('App\Article', 'category_id', 'id');
+        return $this->hasMany(\App\Article::class, 'category_id', 'id');
     }
 }
