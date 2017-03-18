@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Carbon\Carbon as Carbon;
 use Closure;
+use Carbon\Carbon as Carbon;
 
 class demoMiddleware
 {

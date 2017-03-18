@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use File;
-use Illuminate\Console\Command;
 use Image;
+use Illuminate\Console\Command;
 
 class Resize extends Command
 {
