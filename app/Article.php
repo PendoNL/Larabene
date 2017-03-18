@@ -60,7 +60,7 @@ class Article extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App\ArticleCategory');
+        return $this->belongsTo(\App\ArticleCategory::class);
     }
 
     /**
@@ -105,7 +105,7 @@ class Article extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\User::class);
     }
 
     /**
@@ -113,7 +113,7 @@ class Article extends Model
      */
     public function metas()
     {
-        return $this->morphMany('\App\Meta', 'metable');
+        return $this->morphMany(\App\Meta::class, 'metable');
     }
 
     /**
