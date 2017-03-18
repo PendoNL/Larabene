@@ -2,23 +2,22 @@
 
 Auth::routes();
 
-/**
+/*
  * Administration Area Routes
  */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth','role:admin|owner']], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role:admin|owner']], function () {
 
-    /**
+    /*
      * Admin Home
      */
     Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'AdminController@index']);
 
-
-    /**
+    /*
      * Log Viewer
      */
     Route::get('logs', ['as' => 'admin.logs', 'uses' => '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index']);
 
-    /**
+    /*
      * Content Admin
      */
     Route::group(['prefix' => 'content'], function () {
@@ -31,8 +30,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::get('/{content}/delete', ['as' => 'admin.content.destroy', 'uses' => 'ContentController@destroy']);
     });
 
-
-    /**
+    /*
      * Article Routes
      */
     Route::group(['prefix' => 'articles'], function () {
@@ -49,7 +47,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::put('/{article}/edit', ['as' => 'admin.articles.update', 'uses' => 'ArticleController@update']);
         Route::get('/{article}/delete', ['as' => 'admin.articles.destroy', 'uses' => 'ArticleController@destroy']);
 
-        /**
+        /*
          * Article Categories Admin
          */
         Route::group(['prefix' => 'categories'], function () {
@@ -64,15 +62,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     });
 });
 
-
-/**
+/*
  * Contact Routes
  */
 Route::get('/contact', ['as' => 'contact', 'uses' => 'ContactController@show']);
 Route::post('/contact', 'ContactController@post');
 
-
-/**
+/*
  *  Leden Routes
  */
 Route::group(['prefix' => 'leden'], function () {
@@ -85,7 +81,7 @@ Route::group(['prefix' => 'leden'], function () {
     Route::post('/inloggen', 'Auth\LoginController@login');
 });
 
-/**
+/*
  * Reset Password Routes
  */
 Route::group(['prefix' => 'wachtwoord'], function () {
@@ -96,7 +92,7 @@ Route::group(['prefix' => 'wachtwoord'], function () {
     Route::post('vergeten', 'Auth\PasswordController@postEmail');
 });
 
-/**
+/*
  * Blog Routes
  */
 Route::group(['prefix' => 'blog'], function () {
@@ -108,12 +104,12 @@ Route::group(['prefix' => 'blog'], function () {
     Route::post('/', ['as' => 'blogs.search', 'uses' => 'ArticleController@search']);
 });
 
-/**
+/*
  * Content Pages or 404 Fallback
  */
 Route::get('{slug}', ['as' => 'content.show', 'uses' => 'ContentController@show']);
 
-/**
+/*
  * Fixed Content Routes
  */
 Route::get('/', ['as' => 'content.home', 'uses' => 'ContentController@index']);

@@ -1,25 +1,21 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryRequest;
 use App\ArticleCategory;
-use App\Http\Requests;
-use Validator;
-use Request;
-use Route;
+use App\Http\Requests\CategoryRequest;
 use Flash;
-use Input;
+use Route;
 
 class ArticleCategoryController extends \App\Http\Controllers\Controller
 {
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         return view('admin.articles.categories.list', [
-            'categories' => ArticleCategory::all()
+            'categories' => ArticleCategory::all(),
         ]);
     }
 
@@ -30,16 +26,17 @@ class ArticleCategoryController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        $category = new ArticleCategory;
+        $category = new ArticleCategory();
 
         return view('admin.articles.categories.create')->with([
             'category'      => $category,
-            'buttonLabel'   => 'Opslaan'
+            'buttonLabel'   => 'Opslaan',
         ]);
     }
 
     /**
      * @param CategoryRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(CategoryRequest $request)
@@ -58,20 +55,22 @@ class ArticleCategoryController extends \App\Http\Controllers\Controller
 
      * Show the form for editing the specified resource.
      *
-     * @param  ArticleCategory   $category
+     * @param ArticleCategory $category
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(ArticleCategory $category)
     {
         return view('admin.articles.categories.update')->with([
             'category'      => $category,
-            'buttonLabel'   => 'Wijzigingen opslaan'
+            'buttonLabel'   => 'Wijzigingen opslaan',
         ]);
     }
 
     /**
      * @param CategoryRequest $request
      * @param ArticleCategory $category
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(CategoryRequest $request, ArticleCategory $category)
@@ -88,6 +87,7 @@ class ArticleCategoryController extends \App\Http\Controllers\Controller
 
     /**
      * @param ArticleCategory $category
+     *
      * @return mixed
      */
     public function destroy(ArticleCategory $category)

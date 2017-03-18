@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use File;
-use Image;
 use Illuminate\Console\Command;
+use Image;
 
 class Resize extends Command
 {
@@ -38,31 +38,34 @@ class Resize extends Command
         $filePath = $this->argument('filepath');
         $fileName = $file = basename($filePath);
 
-        $prefix = ($this->option('prefix') != 'null') ? $this->option('prefix') : null ;
+        $prefix = ($this->option('prefix') != 'null') ? $this->option('prefix') : null;
         $quality = (intval($this->option('quality')) == 0) ? 80 : intval($this->option('quality'));
         $width = ($this->option('width') == 'null' || intval($this->option('width')) == 0) ? null : intval($this->option('width'));
         $height = ($this->option('height') == 'null' || intval($this->option('height')) == 0) ? null : intval($this->option('height'));
 
         if ($width == null && $height == null) {
             $this->error('Not both width and height can be null');
+
             return false;
         }
 
         if ($this->option('destination') != 'null' && !is_dir($this->option('destination'))) {
-            $this->error("Invalid destination folder");
+            $this->error('Invalid destination folder');
+
             return false;
         }
 
-        $destinationPath = (is_dir($filePath)) ? (is_dir($this->option('destination')) ? $this->option('destination') : $filePath) : (is_dir($this->option('destination')) ? $this->option('destination') : dirname($filePath)) ;
+        $destinationPath = (is_dir($filePath)) ? (is_dir($this->option('destination')) ? $this->option('destination') : $filePath) : (is_dir($this->option('destination')) ? $this->option('destination') : dirname($filePath));
 
         if ($destinationPath == dirname($filePath) && $prefix == null) {
             $this->error('When saving to the same directory, please specify a file prefix');
+
             return false;
         }
 
         if (!is_dir($filePath)) {
-            $this->info('Searching for ' . $fileName);
-            $this->info('Path: ' . $filePath);
+            $this->info('Searching for '.$fileName);
+            $this->info('Path: '.$filePath);
 
             $this->resize($filePath, $destinationPath, $prefix, $width, $height, $quality);
         } elseif (is_dir($filePath)) {
@@ -78,7 +81,7 @@ class Resize extends Command
     }
 
     /**
-     * Resize the file(s)
+     * Resize the file(s).
      *
      * @param $filePath
      * @param $destination
@@ -86,6 +89,7 @@ class Resize extends Command
      * @param $width
      * @param $height
      * @param $quality
+     *
      * @return bool
      */
     private function resize($filePath, $destination, $prefix, $width, $height, $quality)
@@ -93,7 +97,8 @@ class Resize extends Command
         $fileName = basename($filePath);
 
         if (!file_exists($filePath)) {
-            $this->error('File not found: ' . $fileName);
+            $this->error('File not found: '.$fileName);
+
             return false;
         }
 

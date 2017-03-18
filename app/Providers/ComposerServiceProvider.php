@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Support\ServiceProvider;
-use App\Agenda;
 
 class ComposerServiceProvider extends ServiceProvider
 {

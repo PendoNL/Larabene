@@ -4,9 +4,8 @@ use Illuminate\Database\Seeder;
 
 class ArticleCategoriesTableSeeder extends Seeder
 {
-
     /**
-     * Auto generated seed file
+     * Auto generated seed file.
      *
      * @return void
      */

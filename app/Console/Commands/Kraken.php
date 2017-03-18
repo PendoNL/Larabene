@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use File;
-use KrakenIO;
 use Illuminate\Console\Command;
+use KrakenIO;
 
 class Kraken extends Command
 {
@@ -35,8 +35,8 @@ class Kraken extends Command
         $fileName = $file = basename($filePath);
 
         if (!is_dir($filePath)) {
-            $this->info('Searching for ' . $fileName);
-            $this->info('Path: ' . $filePath);
+            $this->info('Searching for '.$fileName);
+            $this->info('Path: '.$filePath);
 
             $this->kraken($filePath, $quality);
         } elseif (is_dir($filePath)) {
@@ -52,27 +52,28 @@ class Kraken extends Command
     }
 
     /**
-     * Compress a file using KrakenIO
+     * Compress a file using KrakenIO.
      *
      * @param $filePath
+     *
      * @return bool
      */
     private function kraken($filePath, $quality)
     {
-
         $fileName = basename($filePath);
 
         if (!file_exists($filePath)) {
-            $this->error('File not found: ' . $fileName);
+            $this->error('File not found: '.$fileName);
+
             return false;
         }
 
         $this->info("\n"."Optimizing {$fileName}");
 
         $response = KrakenIO::upload([
-            'file' => $filePath,
-            'wait' => true,
-            'lossy' => true,
+            'file'    => $filePath,
+            'wait'    => true,
+            'lossy'   => true,
             'quality' => $quality,
         ]);
 
@@ -82,9 +83,9 @@ class Kraken extends Command
             File::delete($filePath);
             File::put($filePath, $contents);
 
-            $this->info('Kraked succesfully - original size: ' . $response['original_size'] . ' - New size: ' . $response['kraked_size']);
+            $this->info('Kraked succesfully - original size: '.$response['original_size'].' - New size: '.$response['kraked_size']);
         } else {
-            $this->error("Krake failed for this image");
+            $this->error('Krake failed for this image');
         }
     }
 }

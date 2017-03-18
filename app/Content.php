@@ -10,7 +10,7 @@ class Content extends Model
     use Sluggable;
 
     /**
-     * @var string $table
+     * @var string
      */
     protected $table = 'pages';
 
@@ -23,8 +23,8 @@ class Content extends Model
     {
         return [
             'slug' => [
-                'source' => 'menu_text'
-            ]
+                'source' => 'menu_text',
+            ],
         ];
     }
 
@@ -39,10 +39,10 @@ class Content extends Model
     }
 
     /**
-     * @var array $fillable
+     * @var array
      */
     protected $fillable = [
-        'slug', 'menu_text', 'title', 'content'
+        'slug', 'menu_text', 'title', 'content',
     ];
 
     /**

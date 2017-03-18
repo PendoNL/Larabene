@@ -18,8 +18,8 @@ class ArticleCategory extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 
@@ -38,6 +38,7 @@ class ArticleCategory extends Model
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function scopeAlphabetical($query)
