@@ -2,10 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Mail\ContactFormSubmitted;
 use Validator;
 use Request;
 use Flash;
-
 use Mail;
 
 class ContactController extends Controller
@@ -62,12 +62,7 @@ class ContactController extends Controller
 
         Flash::success('Uw bericht is verzonden, wij proberen zo spoedig mogelijk te antwoorden.');
 
-        Mail::send('emails.forms.contact', ['input' => $input], function ($message) use ($input) {
-            $message->from(env('MAIL_FROM'), env('MAIL_NAME'));
-            $message->replyTo($input['email'], $input['name']);
-            $message->to(env('MAIL_FROM'), env('MAIL_NAME'));
-            $message->subject('Iemand heeft contact gezocht via Larabene.com');
-        });
+        Mail::to(env('MAIL_FROM'))->send(new ContactFormSubmitted($input));
 
         return redirect(route('contact'));
     }
