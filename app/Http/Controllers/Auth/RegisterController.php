@@ -2,64 +2,39 @@
 
 namespace App\Http\Controllers\Auth;
 
-use URL;
-use Auth;
-use Input;
-use Flash;
-use Event;
-use Session;
-use Redirect;
 use App\User;
-use App\Group;
 use Validator;
-use Illuminate\Http\Request;
-use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | registration & login controller
+    | Register Controller
     |--------------------------------------------------------------------------
     |
-    | this controller handles the registration of new users, as well as the
-    | authentication of existing users. by default, this controller uses
-    | a simple trait to add these behaviors. why don't you explore it?
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    protected $redirectPath = '/dashboard';
+    use RegistersUsers;
 
     /**
-     * Create a new authentication controller instance.
+     * Where to redirect users after login / registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
-    }
-
-    /**
-     * Show the application login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getLogin()
-    {
-
-        if (!session()->has('from')) {
-            session()->put('from', redirect()->back()->getTargetUrl());
-        }
-
-        if (view()->exists('auth.authenticate')) {
-            return view('auth.authenticate');
-        }
-
-        return view('auth.login');
+        $this->middleware('guest');
     }
 
     /**
@@ -118,7 +93,7 @@ class AuthController extends Controller
                 $validator
             );
         }
-        
+
         Flash::success('U bent geregistreerd.');
 
         Auth::login($this->create($request->all()));

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -15,8 +17,7 @@ class User extends Model implements
     AuthorizableContract,
     CanResetPasswordContract
 {
-
-    use Authenticatable, CanResetPassword, EntrustUserTrait;
+    use Notifiable, Sluggable, Authenticatable, CanResetPassword, EntrustUserTrait;
 
     /**
      * The database table used by the model.
@@ -24,6 +25,30 @@ class User extends Model implements
      * @var string $table
      */
     protected $table = 'users';
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'full_name'
+            ]
+        ];
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     /**
      * The attributes that are mass assignable.

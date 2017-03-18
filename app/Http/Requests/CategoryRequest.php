@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Gate;
 
-class CategoryRequest extends Request
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class CategoryRequest extends Request
      */
     public function authorize()
     {
-        return \Auth::check();
+        return Gate::allows('anything');
     }
 
     /**

@@ -19,6 +19,7 @@ return [
         'secret' => env('PUSHEDCO_API_SECRET'),
         'token' => env('PUSHEDCO_ACCESS_TOKEN'),
     ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
@@ -32,6 +33,10 @@ return [
         'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
+    ],
+
+    'sparkpost' => [
+        'secret' => env('SPARKPOST_SECRET'),
     ],
 
     'stripe' => [

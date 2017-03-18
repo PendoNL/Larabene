@@ -25,11 +25,11 @@ class CreateBlogTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('slug');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('title');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->text('content');
-            $table->string('tags');
+            $table->string('tags')->nullable();
             $table->timestamps();
         });
 

@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Gate;
 
-class ContentRequest extends Request
+class ContentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,20 +14,7 @@ class ContentRequest extends Request
      */
     public function authorize()
     {
-        switch ($this->method) {
-            case 'POST':
-                return Gate::allows('create-content');
-                break;
-
-            case 'PATCH':
-            case 'PUT':
-                return Gate::allows('update-content');
-                break;
-
-            default:
-                return false;
-                break;
-        }
+        return Gate::allows('anything');
     }
 
     /**
