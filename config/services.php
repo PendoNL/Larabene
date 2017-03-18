@@ -15,9 +15,9 @@ return [
     */
 
     'pushedco' => [
-        'key' => env('PUSHEDCO_API_KEY'),
+        'key'    => env('PUSHEDCO_API_KEY'),
         'secret' => env('PUSHEDCO_API_SECRET'),
-        'token' => env('PUSHEDCO_ACCESS_TOKEN'),
+        'token'  => env('PUSHEDCO_ACCESS_TOKEN'),
     ],
 
     'mailgun' => [
@@ -49,6 +49,6 @@ return [
         'client_id'     => env('FB_CLIENT_ID'),
         'client_secret' => env('FB_CLIENT_SECRET'),
         'redirect'      => env('FB_REDIRECT_URL'),
-    ]
+    ],
 
 ];

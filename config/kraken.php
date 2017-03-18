@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -9,6 +10,6 @@ return [
     | "https://kraken.io/account/api-credentials"
     |
     */
-    'api_key' => env('KRAKEN_KEY'),
+    'api_key'    => env('KRAKEN_KEY'),
     'api_secret' => env('KRAKEN_SECRET'),
 ];

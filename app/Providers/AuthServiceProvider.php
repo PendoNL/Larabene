@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
+use App\Permission;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Permission;
-use App\Company;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -15,18 +14,19 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \App\Model::class => \App\Policies\ModelPolicy::class
+        \App\Model::class => \App\Policies\ModelPolicy::class,
     ];
 
     /**
      * Register any application authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
+     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+     *
      * @return void
      */
     public function boot(GateContract $gate)
     {
-        /**
+        /*
          * Admin and Owner _always_ have access to the full platform
          */
         $gate->before(function ($user) {

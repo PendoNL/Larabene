@@ -2,15 +2,13 @@
 
 namespace App;
 
-use File;
 use Cviebrock\EloquentSluggable\Sluggable;
+use File;
 use Illuminate\Database\Eloquent\Model;
-use App\ArticleComment;
 
 class Article extends Model
 {
-
-    /**
+    /*
      * Model is Sluggable
      */
     use Sluggable;
@@ -24,8 +22,8 @@ class Article extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
-            ]
+                'source' => 'title',
+            ],
         ];
     }
 
@@ -40,22 +38,25 @@ class Article extends Model
     }
 
     /**
-     * Date fields
-     * @var array $dates
+     * Date fields.
+     *
+     * @var array
      */
     protected $dates = ['date'];
 
     /**
-     * Fillable fields
-     * @var array $fillable
+     * Fillable fields.
+     *
+     * @var array
      */
     protected $fillable = [
         'type', 'active', 'category_id', 'user_id', 'slug',
-        'date', 'title', 'image', 'content', 'tags', 'highlighted'
+        'date', 'title', 'image', 'content', 'tags', 'highlighted',
     ];
-    
+
     /**
-     * A blog belongs to a category
+     * A blog belongs to a category.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
@@ -65,6 +66,7 @@ class Article extends Model
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function scopeActive($query)
@@ -74,6 +76,7 @@ class Article extends Model
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function scopeHighlighted($query)
@@ -83,6 +86,7 @@ class Article extends Model
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function scopeFront($query)
@@ -92,6 +96,7 @@ class Article extends Model
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function scopeRecent($query)
@@ -100,7 +105,8 @@ class Article extends Model
     }
 
     /**
-     * A blog is written by a user
+     * A blog is written by a user.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -133,13 +139,14 @@ class Article extends Model
     /**
      * delete the image belonging to the article first.
      * then proceed with regular deleting.
+     *
      * @return parent::delete()
      */
     public function delete()
     {
         if ($this->attributes['image']) {
             $file = $this->attributes['image'];
-            $path = public_path('uploads/articles/' . $file);
+            $path = public_path('uploads/articles/'.$file);
 
             if (file::isfile($path)) {
                 File::delete($path);

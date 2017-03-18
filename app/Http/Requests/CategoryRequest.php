@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Gate;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryRequest extends FormRequest
 {
@@ -27,14 +27,14 @@ class CategoryRequest extends FormRequest
         switch ($this->method) {
             case 'POST':
                 return [
-                    'name' => 'required'
+                    'name' => 'required',
                 ];
             break;
 
             case 'PATCH':
             case 'PUT':
                 return [
-                    'name' => 'required'
+                    'name' => 'required',
                 ];
             break;
 

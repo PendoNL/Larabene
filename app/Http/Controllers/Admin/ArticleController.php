@@ -1,25 +1,19 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\ArticleRequest;
-use Illuminate\Support\Str;
-use App\ArticleCategory;
-use App\Http\Requests;
 use App\Article;
-use App\Group;
-use Validator;
+use App\ArticleCategory;
+use App\Http\Requests\ArticleRequest;
+use Auth;
+use File;
+use Flash;
+use Gate;
+use Illuminate\Support\Str;
+use Image;
 use KrakenIO;
 use Request;
 use Route;
-use Flash;
-use Input;
-use Image;
-use Event;
-use File;
-use Mail;
-use Gate;
-use Auth;
 
 class ArticleController extends \App\Http\Controllers\Controller
 {
@@ -29,7 +23,7 @@ class ArticleController extends \App\Http\Controllers\Controller
     public function index()
     {
         return view('admin.articles.index', [
-            'articles' => Article::recent()->paginate(25)
+            'articles' => Article::recent()->paginate(25),
         ]);
     }
 
@@ -40,26 +34,27 @@ class ArticleController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        $article = new Article;
+        $article = new Article();
         $article->date = \Carbon\Carbon::now();
-        
+
         return view('admin.articles.create')->with([
             'article'       => $article,
             'buttonLabel'   => 'Opslaan',
-            'category_list' => ArticleCategory::alphabetical()->pluck('name', 'id')
+            'category_list' => ArticleCategory::alphabetical()->pluck('name', 'id'),
         ]);
     }
 
     /**
      * @param ArticleRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(ArticleRequest $request)
     {
         $input = $request->all();
-        $input['user_id']   = Auth::user()->id;
-        $input['active']    = 1;
-        $input['image']     = $this->uploadImage();
+        $input['user_id'] = Auth::user()->id;
+        $input['active'] = 1;
+        $input['image'] = $this->uploadImage();
 
         Article::create($input);
 
@@ -72,7 +67,8 @@ class ArticleController extends \App\Http\Controllers\Controller
 
      * Show the form for editing the specified resource.
      *
-     * @param  Article   $article
+     * @param Article $article
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Article $article)
@@ -80,13 +76,14 @@ class ArticleController extends \App\Http\Controllers\Controller
         return view('admin.articles.update')->with([
             'article'       => $article,
             'buttonLabel'   => 'Wijzigingen opslaan',
-            'category_list' => ArticleCategory::alphabetical()->pluck('name', 'id')
+            'category_list' => ArticleCategory::alphabetical()->pluck('name', 'id'),
         ]);
     }
 
     /**
      * @param ArticleRequest $request
-     * @param Article $article
+     * @param Article        $article
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(ArticleRequest $request, Article $article)
@@ -103,6 +100,7 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return mixed
      */
     public function highlight(Article $article)
@@ -117,6 +115,7 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return mixed
      */
     public function dehighlight(Article $article)
@@ -131,6 +130,7 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return mixed
      */
     public function deactivate(Article $article)
@@ -145,6 +145,7 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return mixed
      */
     public function activate(Article $article)
@@ -159,11 +160,12 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return mixed
      */
     public function defront(Article $article)
     {
-        if ($article->type == "B") {
+        if ($article->type == 'B') {
             $article->front = 0;
             $article->save();
 
@@ -177,11 +179,12 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return mixed
      */
     public function front(Article $article)
     {
-        if ($article->type == "B") {
+        if ($article->type == 'B') {
             $article->front = 1;
             $article->save();
 
@@ -195,12 +198,13 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function removeImage(Article $article)
     {
-        if (file_exists(public_path('uploads/articles/' . $article->image)) && $article->image != "") {
-            File::delete(public_path('uploads/articles/' . $article->image));
+        if (file_exists(public_path('uploads/articles/'.$article->image)) && $article->image != '') {
+            File::delete(public_path('uploads/articles/'.$article->image));
             $article->image = '';
             $article->save();
 
@@ -212,15 +216,16 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param string $old
+     *
      * @return string
      */
     public function uploadImage($old = '')
     {
         if (Request::hasFile('image')) {
             $image = Request::file('image');
-            $filename  = time() . Str::random(10) . '.' . $image->getClientOriginalExtension();
-            $path = public_path('uploads/articles/' . $filename);
-            $thumb = public_path('uploads/articles/thumb.' . $filename);
+            $filename = time().Str::random(10).'.'.$image->getClientOriginalExtension();
+            $path = public_path('uploads/articles/'.$filename);
+            $thumb = public_path('uploads/articles/thumb.'.$filename);
 
             try {
                 Image::make($image->getRealPath())->resize(800, null, function ($constraint) {
@@ -231,19 +236,19 @@ class ArticleController extends \App\Http\Controllers\Controller
                     $constraint->aspectRatio();
                 })->save($thumb);
 
-                if ($old != "") {
+                if ($old != '') {
                     if (file_exists(public_path('uploads/articles/'.$old))) {
-                        File::delete(public_path('uploads/articles/' . $old));
+                        File::delete(public_path('uploads/articles/'.$old));
                     }
 
                     if (file_exists(public_path('uploads/articles/thumb.'.$old))) {
-                        File::delete(public_path('uploads/articles/thumb.' . $old));
+                        File::delete(public_path('uploads/articles/thumb.'.$old));
                     }
                 }
 
                 $response = KrakenIO::upload([
-                    'file' => $path,
-                    'wait' => true,
+                    'file'  => $path,
+                    'wait'  => true,
                     'lossy' => true,
                 ]);
 
@@ -265,6 +270,7 @@ class ArticleController extends \App\Http\Controllers\Controller
 
     /**
      * @param Article $article
+     *
      * @return mixed
      */
     public function destroy(Article $article)

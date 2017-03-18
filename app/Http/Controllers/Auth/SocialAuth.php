@@ -1,11 +1,12 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
 
-use Laravel\Socialite\Contracts\Factory as Socialite;
+namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 
 class SocialAuth extends Controller
 {
-
     public function __construct(Socialite $socialite)
     {
         $this->socialite = $socialite;
@@ -19,7 +20,6 @@ class SocialAuth extends Controller
 
         return $this->socialite->with($provider)->redirect();
     }
-
 
     public function getSocialAuthCallback($provider = null)
     {

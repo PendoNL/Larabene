@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Auth;
-use Gate;
+use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordRequest extends FormRequest
 {
@@ -29,8 +28,8 @@ class PasswordRequest extends FormRequest
             case 'PATCH':
             case 'PUT':
                 return [
-                    'password' => 'required|min:6',
-                    'new_password' => 'required|confirmed|min:6'
+                    'password'     => 'required|min:6',
+                    'new_password' => 'required|confirmed|min:6',
                 ];
                 break;
 

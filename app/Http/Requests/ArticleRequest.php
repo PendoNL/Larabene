@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Gate;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ArticleRequest extends FormRequest
 {
@@ -28,9 +28,9 @@ class ArticleRequest extends FormRequest
             case 'POST':
                 return [
                     'category_id' => 'required|exists:article_categories,id',
-                    'title' => 'required',
-                    'content' => 'required',
-                    'tags' => 'required',
+                    'title'       => 'required',
+                    'content'     => 'required',
+                    'tags'        => 'required',
                 ];
             break;
 
@@ -38,9 +38,9 @@ class ArticleRequest extends FormRequest
             case 'PUT':
                 return [
                     'category_id' => 'required|exists:article_categories,id',
-                    'title' => 'required',
-                    'content' => 'required',
-                    'tags' => 'required',
+                    'title'       => 'required',
+                    'content'     => 'required',
+                    'tags'        => 'required',
                 ];
             break;
 

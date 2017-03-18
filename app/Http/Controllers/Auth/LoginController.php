@@ -38,6 +38,7 @@ class LoginController extends Controller
     /**
      * @param $request
      * @param $user
+     *
      * @return mixed
      */
     public function authenticated($request, $user)
