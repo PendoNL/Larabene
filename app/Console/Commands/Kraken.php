@@ -34,22 +34,18 @@ class Kraken extends Command
         $filePath = $this->argument('filepath');
         $fileName = $file = basename($filePath);
 
-        if(!is_dir($filePath)) {
-
+        if (!is_dir($filePath)) {
             $this->info('Searching for ' . $fileName);
             $this->info('Path: ' . $filePath);
 
             $this->kraken($filePath, $quality);
-
-        } elseif(is_dir($filePath)) {
-
+        } elseif (is_dir($filePath)) {
             $this->info("Kraking all files in {$filePath}");
 
             $files = File::files(substr($filePath, 0, -1));
-            foreach($files as $file) {
+            foreach ($files as $file) {
                 $this->kraken($file, $quality);
             }
-
         } else {
             $this->error('An error occured');
         }
@@ -61,7 +57,8 @@ class Kraken extends Command
      * @param $filePath
      * @return bool
      */
-    private function kraken($filePath, $quality) {
+    private function kraken($filePath, $quality)
+    {
 
         $fileName = basename($filePath);
 

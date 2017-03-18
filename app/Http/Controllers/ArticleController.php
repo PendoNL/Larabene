@@ -13,7 +13,7 @@ use App\Article;
 use Request;
 use Route;
 use Flash;
-use Input;
+use Session;
 use Image;
 use Event;
 use File;
@@ -32,7 +32,7 @@ class ArticleController extends Controller
     public function index()
     {
         $blogs = Article::active()->recent();
-        if(Session::get('blog_string') != "") {
+        if (Session::get('blog_string') != "") {
             $blogs = $blogs->where('title', 'LIKE', '%'. Session::get('blog_string') .'%');
             $blogs = $blogs->orWhere('content', 'LIKE', '%'. Session::get('blog_string') .'%');
         }
@@ -101,10 +101,9 @@ class ArticleController extends Controller
      */
     public function search()
     {
-        $string = Input::get('string');
+        $string = Request::get('string');
         Session::put('blog_string', $string);
 
         return redirect(route('blogs.index'));
     }
-
 }

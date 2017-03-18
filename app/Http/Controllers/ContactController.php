@@ -5,7 +5,7 @@ use App\Http\Requests;
 use Validator;
 use Request;
 use Flash;
-use Input;
+
 use Mail;
 
 class ContactController extends Controller
@@ -32,7 +32,7 @@ class ContactController extends Controller
      */
     public function post()
     {
-        if(Input::has('send')) {
+        if (Request::has('send')) {
             return $this->sendContactForm();
         }
     }
@@ -55,15 +55,14 @@ class ContactController extends Controller
             'email'     => 'E-mailadres'
         ]);
 
-        $input = Input::all();
+        $input = Request::all();
         if ($validator->fails()) {
             return redirect(route('contact'))->withErrors($validator, 'contact')->withInput($input);
         }
 
         Flash::success('Uw bericht is verzonden, wij proberen zo spoedig mogelijk te antwoorden.');
 
-        Mail::send('emails.forms.contact', ['input' => $input], function($message) use ($input)
-        {
+        Mail::send('emails.forms.contact', ['input' => $input], function ($message) use ($input) {
             $message->from(env('MAIL_FROM'), env('MAIL_NAME'));
             $message->replyTo($input['email'], $input['name']);
             $message->to(env('MAIL_FROM'), env('MAIL_NAME'));

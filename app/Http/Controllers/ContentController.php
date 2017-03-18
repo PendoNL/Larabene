@@ -17,8 +17,7 @@ class ContentController extends Controller
     public function show($slug)
     {
         $content = Content::where('slug', $slug)->first();
-        if(!empty($content->title)) {
-
+        if (!empty($content->title)) {
             // Variables
             $with = [
                 'page_title' => ($content->menu_text . ' - Pendo.'),

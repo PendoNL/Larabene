@@ -48,7 +48,7 @@
                                         <a href="{{ route('blogs.show', ['articlecategory' => $article->category->slug, 'article' => $article->slug]) }}">{{ $article->title }}</a>
                                     </td>
                                     <td>{{ !is_null($article->user) ? $article->user->name : '' }}</td>
-                                    <td>{{ $article->date->format('d-m-Y') }}</td>
+                                    <td>{{ $article->updated_at->format('d-m-Y') }}</td>
                                     <td>
                                         @can('update-article')
                                         <a href="{{ route('admin.articles.edit', ['article' => $article->slug]) }}" class="btn btn-small btn-primary"><i class="fa fa-pencil"></i></a>

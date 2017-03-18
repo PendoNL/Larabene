@@ -33,8 +33,7 @@ class ContentController extends Controller
      */
     public function create()
     {
-        if( Gate::denies('create-content') )
-        {
+        if (Gate::denies('create-content')) {
             return redirect(route('admin.content'));
         }
 
@@ -65,8 +64,7 @@ class ContentController extends Controller
      */
     public function edit(Content $content)
     {
-        if(Gate::denies('update-content'))
-        {
+        if (Gate::denies('update-content')) {
             return redirect(route('admin.content'));
         }
 
@@ -100,8 +98,7 @@ class ContentController extends Controller
      */
     public function destroy(Content $content)
     {
-        if( Gate::denies('delete-content') )
-        {
+        if (Gate::denies('delete-content')) {
             return redirect(route('admin.content'));
         }
 
@@ -111,5 +108,4 @@ class ContentController extends Controller
 
         return redirect(route('admin.content'));
     }
-
 }

@@ -33,7 +33,6 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $loginPath = '/login';
     protected $redirectPath = '/dashboard';
 
     /**
@@ -52,7 +51,7 @@ class AuthController extends Controller
     public function getLogin()
     {
 
-        if(!session()->has('from')){
+        if (!session()->has('from')) {
             session()->put('from', redirect()->back()->getTargetUrl());
         }
 
@@ -115,7 +114,8 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             $this->throwValidationException(
-                $request, $validator
+                $request,
+                $validator
             );
         }
         

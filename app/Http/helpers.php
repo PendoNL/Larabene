@@ -6,7 +6,7 @@
  * @param $route
  * @return string
 */
-function is_active( $route )
+function is_active($route)
 {
     return Route::currentRouteName() == $route ? 'active' : '' ;
 }
@@ -17,9 +17,9 @@ function is_active( $route )
  * @param $url
  * @return string
  */
-function is_active_url( $url )
+function is_active_url($url)
 {
-    return Request::is( $url ) || Request::is( $url . '/*') ? 'active' : '' ;
+    return Request::is($url) || Request::is($url . '/*') ? 'active' : '' ;
 }
 
 function is_active_compare($original, $compare)
@@ -31,7 +31,7 @@ function is_active_compare($original, $compare)
  * @param $value
  * @return int
  */
-function is_url( $value )
+function is_url($value)
 {
     return preg_match('%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$%iu', $value);
 }
@@ -40,7 +40,7 @@ function is_url( $value )
  * @param $value
  * @return mixed
  */
-function domain_base( $value )
+function domain_base($value)
 {
     $find = [
         'http://',
@@ -61,7 +61,7 @@ function domain_base( $value )
  */
 function localeDate($date, $format)
 {
-    return Jenssegers\Date\Date::createFromFormat('d-m-Y H:i:s',  $date->format('d-m-Y H:i:s'))->format($format);
+    return Jenssegers\Date\Date::createFromFormat('d-m-Y H:i:s', $date->format('d-m-Y H:i:s'))->format($format);
 }
 
 /**
@@ -69,8 +69,9 @@ function localeDate($date, $format)
  * @param $compare
  * @return string
  */
-function signupButtonOpactiy($status, $compare) {
-    if($status == 0 || $status == $compare) {
+function signupButtonOpactiy($status, $compare)
+{
+    if ($status == 0 || $status == $compare) {
         return '1';
     }
     return '.4';
@@ -81,24 +82,26 @@ function signupButtonOpactiy($status, $compare) {
  * @param bool $opacity
  * @return string
  */
-function hex2rgba($color, $opacity = false) {
+function hex2rgba($color, $opacity = false)
+{
 
     $default = 'rgb(0,0,0)';
 
     //Return default if no color provided
-    if(empty($color))
+    if (empty($color)) {
         return $default;
+    }
 
     //Sanitize $color if "#" is provided
-    if ($color[0] == '#' ) {
-        $color = substr( $color, 1 );
+    if ($color[0] == '#') {
+        $color = substr($color, 1);
     }
 
     //Check if color has 6 or 3 characters and get values
     if (strlen($color) == 6) {
-        $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-    } elseif ( strlen( $color ) == 3 ) {
-        $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+        $hex = [ $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] ];
+    } elseif (strlen($color) == 3) {
+        $hex = [ $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] ];
     } else {
         return $default;
     }
@@ -107,12 +110,13 @@ function hex2rgba($color, $opacity = false) {
     $rgb =  array_map('hexdec', $hex);
 
     //Check if opacity is set(rgba or rgb)
-    if($opacity){
-        if(abs($opacity) > 1)
+    if ($opacity) {
+        if (abs($opacity) > 1) {
             $opacity = 1.0;
-        $output = 'rgba('.implode(",",$rgb).','.$opacity.')';
+        }
+        $output = 'rgba('.implode(",", $rgb).','.$opacity.')';
     } else {
-        $output = 'rgb('.implode(",",$rgb).')';
+        $output = 'rgb('.implode(",", $rgb).')';
     }
 
     //Return rgb(a) color string
@@ -126,69 +130,53 @@ function hex2rgba($color, $opacity = false) {
  */
 function substr_close_tags($code, $limit = 300)
 {
-    if ( strlen($code) <= $limit )
-    {
+    if (strlen($code) <= $limit) {
         return $code;
     }
 
     $html = substr($code, 0, $limit);
-    preg_match_all ( "#<([a-zA-Z]+)#", $html, $result );
+    preg_match_all("#<([a-zA-Z]+)#", $html, $result);
 
-    foreach($result[1] AS $key => $value)
-    {
-        if ( strtolower($value) == 'br' )
-        {
+    foreach ($result[1] as $key => $value) {
+        if (strtolower($value) == 'br') {
             unset($result[1][$key]);
         }
     }
     $openedtags = $result[1];
 
-    preg_match_all ( "#</([a-zA-Z]+)>#iU", $html, $result );
+    preg_match_all("#</([a-zA-Z]+)>#iU", $html, $result);
     $closedtags = $result[1];
 
-    foreach($closedtags AS $key => $value)
-    {
-        if ( ($k = array_search($value, $openedtags)) === FALSE )
-        {
+    foreach ($closedtags as $key => $value) {
+        if (($k = array_search($value, $openedtags)) === false) {
             continue;
-        }
-        else
-        {
+        } else {
             unset($openedtags[$k]);
         }
     }
 
-    if ( empty($openedtags) )
-    {
-        if ( strpos($code, ' ', $limit) == $limit )
-        {
+    if (empty($openedtags)) {
+        if (strpos($code, ' ', $limit) == $limit) {
             return $html."...";
-        }
-        else
-        {
+        } else {
             return substr($code, 0, strpos($code, ' ', $limit))."...";
         }
     }
 
     $position = 0;
     $close_tag = '';
-    foreach($openedtags AS $key => $value)
-    {
+    foreach ($openedtags as $key => $value) {
         $p = strpos($code, ('</'.$value.'>'), $limit);
 
-        if ( $p === FALSE )
-        {
+        if ($p === false) {
             $code .= ('</'.$value.'>');
-        }
-        else if ( $p > $position )
-        {
+        } else if ($p > $position) {
             $close_tag = '</'.$value.'>';
             $position = $p;
         }
     }
 
-    if ( $position == 0 )
-    {
+    if ($position == 0) {
         return $code;
     }
 
@@ -202,23 +190,23 @@ function substr_close_tags($code, $limit = 300)
  * @param bool $isHTML
  * @return string
  */
-function truncate_html($s, $l, $e = '', $isHTML = true) {
+function truncate_html($s, $l, $e = '', $isHTML = true)
+{
     $s = trim($s);
     $e = (strlen(strip_tags($s)) > $l) ? $e : '';
     $i = 0;
-    $tags = array();
+    $tags = [];
 
-    if($isHTML) {
+    if ($isHTML) {
         preg_match_all('/<[^>]+>([^<]*)/', $s, $m, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
-        foreach($m as $o) {
-            if($o[0][1] - $i >= $l) {
+        foreach ($m as $o) {
+            if ($o[0][1] - $i >= $l) {
                 break;
             }
             $t = substr(strtok($o[0][0], " \t\n\r\0\x0B>"), 1);
-            if($t[0] != '/') {
+            if ($t[0] != '/') {
                 $tags[] = $t;
-            }
-            elseif(end($tags) == substr($t, 1)) {
+            } elseif (end($tags) == substr($t, 1)) {
                 array_pop($tags);
             }
             $i += $o[1][1] - $o[0][1];
@@ -228,19 +216,22 @@ function truncate_html($s, $l, $e = '', $isHTML = true) {
     return $output;
 }
 
-function truncate_text($s, $l, $wrap = true) {
+function truncate_text($s, $l, $wrap = true)
+{
     $s = trim($s);
     $output = strlen($s) > $l ? substr($s, 0, $l).'...' : $s ;
 
     return $wrap ? '<p>'.$output.'</p>' : $output ;
 }
 
-function truncate_nonhtml($s, $l) {
+function truncate_nonhtml($s, $l)
+{
     $s = strip_tags($s, "");
     return trim(substr($s, 0, $l));
 }
 
-function last_tweets($max = 1) {
+function last_tweets($max = 1)
+{
     if (Cache::has('twitter.tweets')) {
         $tweets = Cache::get('twitter.tweets');
     } else {

@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     /**
      * Content Admin
      */
-    Route::group(['prefix' => 'content'], function() {
+    Route::group(['prefix' => 'content'], function () {
         Route::get('/', ['as' => 'admin.content', 'uses'   => 'ContentController@index']);
         Route::get('/create', ['as' => 'admin.content.create', 'uses' => 'ContentController@create']);
         Route::get('/{content}/edit', ['as' => 'admin.content.edit', 'uses' => 'ContentController@edit']);
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     /**
      * Article Routes
      */
-    Route::group(['prefix' => 'articles'], function() {
+    Route::group(['prefix' => 'articles'], function () {
         Route::get('/all', ['as' => 'admin.articles', 'uses' => 'ArticleController@index']);
         Route::get('/create', ['as' => 'admin.articles.create', 'uses' => 'ArticleController@create']);
         Route::get('/{article}/edit', ['as' => 'admin.articles.edit', 'uses' => 'ArticleController@edit']);
@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         /**
          * Article Categories Admin
          */
-        Route::group(['prefix' => 'categories'], function() {
+        Route::group(['prefix' => 'categories'], function () {
             Route::get('/', ['as' => 'admin.articles.categories', 'uses'   => 'ArticleCategoryController@index']);
             Route::get('/create', ['as' => 'admin.articles.categories.create', 'uses' => 'ArticleCategoryController@create']);
             Route::get('/{articlecategory}/edit', ['as' => 'admin.articles.categories.edit', 'uses' => 'ArticleCategoryController@edit']);
@@ -60,7 +60,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
             Route::get('/{articlecategory}/delete', ['as' => 'admin.articles.categories.destroy', 'uses' => 'ArticleCategoryController@destroy']);
         });
     });
-
 });
 
 
@@ -74,7 +73,7 @@ Route::post('/contact', 'ContactController@post');
 /**
  *  Leden Routes
  */
-Route::group(['prefix' => 'gebruiker'], function() {
+Route::group(['prefix' => 'gebruiker'], function () {
     Route::get('aanmelden', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@getRegister']);
     Route::get('uitloggen', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout']);
     Route::get('inloggen', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@getLogin']);
@@ -86,7 +85,7 @@ Route::group(['prefix' => 'gebruiker'], function() {
 /**
  * Reset Password Routes
  */
-Route::group(['prefix' => 'wachtwoord'], function() {
+Route::group(['prefix' => 'wachtwoord'], function () {
     Route::get('herstellen/{token}', ['as' => 'auth.resetpw', 'uses' => 'Auth\PasswordController@getReset']);
     Route::get('vergeten', ['as' => 'auth.reset', 'uses' => 'Auth\PasswordController@getEmail']);
 
@@ -97,7 +96,7 @@ Route::group(['prefix' => 'wachtwoord'], function() {
 /**
  * Blog Routes
  */
-Route::group(['prefix' => 'blog'], function() {
+Route::group(['prefix' => 'blog'], function () {
     // View Blogs & Index
     Route::get('/', ['as' => 'blogs.index', 'uses' => 'ArticleController@index']);
     Route::get('/{articlecategory}', ['as' => 'blogs.index.category', 'uses' => 'ArticleController@category']);

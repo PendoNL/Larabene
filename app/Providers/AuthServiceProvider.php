@@ -38,7 +38,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         // All custom defined Gate methods
-        if(\Schema::hasTable('permissions')) {
+        if (\Schema::hasTable('permissions')) {
             $this->entrustPermissions($gate);
         }
 

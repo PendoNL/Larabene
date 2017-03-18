@@ -83,7 +83,7 @@ class Article extends Model implements SluggableInterface
      */
     public function scopeRecent($query)
     {
-        return $query->orderBy('date', 'DESC');
+        return $query->orderBy('updated_at', 'DESC');
     }
 
     /**
@@ -106,10 +106,11 @@ class Article extends Model implements SluggableInterface
     /**
      * @return array
      */
-    public function pageMeta() {
+    public function pageMeta()
+    {
         $return = [];
 
-        foreach($this->metas as $meta) {
+        foreach ($this->metas as $meta) {
             $return[$meta->name] = $meta->value;
         }
 
@@ -123,11 +124,11 @@ class Article extends Model implements SluggableInterface
      */
     public function delete()
     {
-        if($this->attributes['image']) {
+        if ($this->attributes['image']) {
             $file = $this->attributes['image'];
             $path = public_path('uploads/articles/' . $file);
 
-            if(file::isfile($path)){
+            if (file::isfile($path)) {
                 File::delete($path);
             }
         }

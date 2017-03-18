@@ -43,39 +43,35 @@ class Resize extends Command
         $width = ($this->option('width') == 'null' || intval($this->option('width')) == 0) ? null : intval($this->option('width'));
         $height = ($this->option('height') == 'null' || intval($this->option('height')) == 0) ? null : intval($this->option('height'));
 
-        if($width == null && $height == null) {
+        if ($width == null && $height == null) {
             $this->error('Not both width and height can be null');
             return false;
         }
 
-        if($this->option('destination') != 'null' && !is_dir($this->option('destination'))) {
+        if ($this->option('destination') != 'null' && !is_dir($this->option('destination'))) {
             $this->error("Invalid destination folder");
             return false;
         }
 
         $destinationPath = (is_dir($filePath)) ? (is_dir($this->option('destination')) ? $this->option('destination') : $filePath) : (is_dir($this->option('destination')) ? $this->option('destination') : dirname($filePath)) ;
 
-        if($destinationPath == dirname($filePath) && $prefix == null) {
+        if ($destinationPath == dirname($filePath) && $prefix == null) {
             $this->error('When saving to the same directory, please specify a file prefix');
             return false;
         }
 
-        if(!is_dir($filePath)) {
-
+        if (!is_dir($filePath)) {
             $this->info('Searching for ' . $fileName);
             $this->info('Path: ' . $filePath);
 
             $this->resize($filePath, $destinationPath, $prefix, $width, $height, $quality);
-
-        } elseif(is_dir($filePath)) {
-
+        } elseif (is_dir($filePath)) {
             $this->info("Resizing all files in {$filePath} and saving to {$destinationPath}");
 
             $files = File::files(substr($filePath, 0, -1));
-            foreach($files as $file) {
+            foreach ($files as $file) {
                 $this->resize($file, $destinationPath, $prefix, $width, $height, $quality);
             }
-
         } else {
             $this->error('An error occured');
         }

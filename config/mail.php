@@ -8,6 +8,4 @@ return [
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
     'username' => env('MAIL_USERNAME'),
     'password' => env('MAIL_PASSWORD'),
-    'sendmail' => '/usr/sbin/sendmail -bs',
-    'pretend' => env('MAIL_PRETEND', false),
-];
+    'sendmail' => '/usr/sbin/sendmail -bs',];
