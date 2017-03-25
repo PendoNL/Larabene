@@ -1,4 +1,3 @@
-[![Style Ci](https://styleci.io/repos/84554479/shield)](https://styleci.io/repos/84554479/)
 [![Scrutinizer CI](https://scrutinizer-ci.com/g/PendoNL/Larabene/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/PendoNL/Larabene/?branch=master)
 
 ### Laravel Belgi&euml; en Nederland
