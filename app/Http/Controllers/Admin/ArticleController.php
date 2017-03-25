@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use File;
-use Gate;
-use Flash;
-use Image;
-use Route;
-use Request;
-use KrakenIO;
 use App\Article;
 use App\ArticleCategory;
-use Illuminate\Support\Str;
 use App\Http\Requests\ArticleRequest;
+use Auth;
+use File;
+use Flash;
+use Gate;
+use Illuminate\Support\Str;
+use Image;
+use KrakenIO;
+use Request;
+use Route;
 
 class ArticleController extends \App\Http\Controllers\Controller
 {

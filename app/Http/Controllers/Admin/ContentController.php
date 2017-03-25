@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Gate;
-use Flash;
 use App\Content;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContentRequest;
+use Flash;
+use Gate;
 
 class ContentController extends Controller
 {
