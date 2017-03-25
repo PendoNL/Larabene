@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
+use App\Mail\ContactFormSubmitted;
 use Flash;
+use Mail;
 use Request;
 use Validator;
-use App\Mail\ContactFormSubmitted;
 
 class ContactController extends Controller
 {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Flash;
-use Route;
 use App\ArticleCategory;
 use App\Http\Requests\CategoryRequest;
+use Flash;
+use Route;
 
 class ArticleCategoryController extends \App\Http\Controllers\Controller
 {

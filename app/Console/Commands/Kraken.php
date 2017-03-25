@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use File;
-use KrakenIO;
 use Illuminate\Console\Command;
+use KrakenIO;
 
 class Kraken extends Command
 {

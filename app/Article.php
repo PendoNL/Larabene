@@ -2,9 +2,9 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use File;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 
 class Article extends Model
 {
